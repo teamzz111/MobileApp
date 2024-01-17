@@ -18,7 +18,7 @@ export type TabProps = {
   onTabPress: () => void;
 };
 const ICON_SIZE = 25;
-const LABEL_WIDTH = SCREEN_WIDTH / 4;
+const LABEL_WIDTH = SCREEN_WIDTH / 3;
 const AnimatedIcon = Animated.createAnimatedComponent(Feather);
 const TabItem: FC<TabProps> = ({
   label,

@@ -8,7 +8,16 @@ const RouterContainer = () => {
   return (
     <>
       <Stack.Navigator>
-        <Stack.Screen name="home" component={BottomTabs} />
+        <Stack.Screen
+          name="Bienvenido"
+          component={BottomTabs}
+          options={{
+            headerTintColor: '#fff',
+            headerStyle: {
+              backgroundColor: '#336666',
+            },
+          }}
+        />
       </Stack.Navigator>
     </>
   );

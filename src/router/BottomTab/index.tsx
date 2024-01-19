@@ -1,9 +1,8 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomBottomTab from '../../components/CustomBottonTab';
-import Home from '../../pages/Home';
-import Things from '../../pages/Things';
-import PokemonList from '../../pages/PokemonList';
+import Users from '../../pages/Users/index';
+import AddUser from '../../pages/AddUser';
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
@@ -14,20 +13,15 @@ const BottomTabs = () => {
           headerShown: false,
         }}>
         <Tab.Screen
-          options={{tabBarLabel: 'Home'}}
-          name="Products"
-          component={Home}
-        />
-        <Tab.Screen
-          options={{tabBarLabel: 'Cart'}}
-          name="Cart"
-          component={Things}
+          options={{tabBarLabel: 'Users'}}
+          name="Users"
+          component={Users}
         />
 
         <Tab.Screen
-          options={{tabBarLabel: 'Favourites'}}
-          name="Favourites"
-          component={PokemonList}
+          options={{tabBarLabel: 'Add user'}}
+          name="AddUser"
+          component={AddUser}
         />
         {/* <Tab.Screen
           options={{tabBarLabel: 'Profile'}}

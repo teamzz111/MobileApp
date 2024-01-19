@@ -45,6 +45,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>EvilIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Feather.ttf</string>
+		<string>AntDesign.ttf</string>
+		<string>FontAwesome.ttf</string>
+	</array>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

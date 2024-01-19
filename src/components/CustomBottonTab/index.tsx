@@ -30,14 +30,12 @@ export const CustomBottomTab: FC<BottomTabBarProps> = ({
   };
   const selectIcon = (routeName: string) => {
     switch (routeName) {
-      case 'Products':
+      case 'Home':
         return 'home';
-      case 'Cart':
-        return 'shopping-bag';
-      case 'Favourites':
-        return 'star';
-      case 'Profile':
+      case 'Users':
         return 'user';
+      case 'AddUser':
+        return 'plus-square';
       default:
         return 'home';
     }

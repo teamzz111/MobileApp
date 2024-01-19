@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomBottomTab from '../../components/CustomBottonTab';
 import Home from '../../pages/Home';
 import Users from '../../pages/Users/index';
-import PokemonList from '../../pages/PokemonList';
+import AddUser from '../../pages/AddUser';
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
@@ -27,7 +27,7 @@ const BottomTabs = () => {
         <Tab.Screen
           options={{tabBarLabel: 'Add user'}}
           name="AddUser"
-          component={PokemonList}
+          component={AddUser}
         />
         {/* <Tab.Screen
           options={{tabBarLabel: 'Profile'}}

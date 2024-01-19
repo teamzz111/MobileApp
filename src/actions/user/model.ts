@@ -4,3 +4,8 @@ export interface GetUsersResponse {
   _id: string;
   name: string;
 }
+
+export interface CreateUserRequest {
+  description: string;
+  name: string;
+}

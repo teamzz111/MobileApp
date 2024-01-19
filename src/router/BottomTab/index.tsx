@@ -1,7 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomBottomTab from '../../components/CustomBottonTab';
-import Home from '../../pages/Home';
 import Users from '../../pages/Users/index';
 import AddUser from '../../pages/AddUser';
 const Tab = createBottomTabNavigator();
@@ -13,11 +12,6 @@ const BottomTabs = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Tab.Screen
-          options={{tabBarLabel: 'Home', headerShown: false}}
-          name="Home"
-          component={Home}
-        />
         <Tab.Screen
           options={{tabBarLabel: 'Users'}}
           name="Users"

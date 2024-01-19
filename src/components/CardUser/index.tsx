@@ -10,9 +10,9 @@ type CardUserProps = {
 
 const CardUser = (props: CardUserProps): JSX.Element => {
   return (
-    <Card mode="elevated" style={styles.container}>
-      <Card.Content style={styles.cardStyle}>
-        <View>
+    <Card mode="elevated" style={styles.container} removeClippedSubviews>
+      <Card.Content style={styles.cardStyle} removeClippedSubviews>
+        <View removeClippedSubviews>
           <Avatar.Image
             key={props.img}
             source={{

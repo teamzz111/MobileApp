@@ -18,7 +18,8 @@ const Users = () => {
       style={styles.container}
       refreshControl={
         <RefreshControl onRefresh={onRefresh} refreshing={false} />
-      }>
+      }
+      removeClippedSubviews={true}>
       {isLoading ? (
         <SkeletonContainer>
           <Skeleton style={styles.cardSkeleton} />

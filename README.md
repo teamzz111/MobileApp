@@ -1,40 +1,84 @@
-# Getting Started
+# MobileApp
 
-Aplicación de react native totalmente nueva encargada de hacer peticiones que traen una lista de usuarios y la creación del mismo, para la navegación se realizó con react-navigation, la traida de datos se realiza con axios y react-query, su separación de carpetas es bastante básica, siguiendo el patrón de componentes / páginas / acciones / router / utils.
+A React Native + TypeScript app for browsing and creating users against a REST API. It is a compact reference for a modern RN setup: server state handled by TanStack Query, a custom animated bottom tab bar drawn with SVG, d3-shape and Reanimated, and Material Design components from React Native Paper.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
 
-## Step 1: Start the Metro Server
+- **User list.** Fetches users from the API and renders them as cards with avatar, name and description. Includes a skeleton loading state and pull-to-refresh.
+- **Create user.** A form with name and description, with validation (the submit button stays disabled until both are filled), a loading state on the button, and success and error toasts.
+- **Custom animated tab bar.** The curved notch is generated with `d3-shape` (`curveBasis`) and morphed between tabs with `react-native-redash` `interpolatePath`, while a Reanimated circle indicator follows the active tab. Safe-area insets are taken into account.
+- **Typed API layer.** A shared Axios instance with a base URL from `.env` (`react-native-dotenv`), a small `UsersService`, and typed request/response models.
+- **Navigation.** A native stack plus bottom tabs (React Navigation 6).
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Tech stack
 
-To start Metro, run the following command from the _root_ of your React Native project:
+| Area | Library |
+| --- | --- |
+| Framework | React Native 0.73, React 18, TypeScript 5 |
+| Server state | @tanstack/react-query 5 (`useQuery`, `useMutation`) |
+| HTTP | Axios |
+| Navigation | @react-navigation/native-stack, @react-navigation/bottom-tabs |
+| UI | react-native-paper 5, react-native-vector-icons, react-native-skeleton-component, react-native-toast-message |
+| Animation and graphics | react-native-reanimated 3, react-native-svg, d3-shape, react-native-redash |
+| Config | react-native-dotenv |
+| Tooling | ESLint, Prettier, Jest |
+
+## Project structure
+
+```
+src/
+├── actions/
+│   ├── http.ts              Axios instance (baseURL from API_URL)
+│   └── user/                UsersService + request/response models
+├── components/
+│   ├── AnimatedCircle/      Active-tab indicator (Reanimated)
+│   ├── CardUser/            User card (Paper Card + Avatar)
+│   ├── CustomBottonTab/     Animated SVG tab bar
+│   └── TabItem/
+├── hooks/useTabs.tsx        Builds the curved tab-bar paths with d3-shape
+├── pages/
+│   ├── Users/               List with skeletons and pull-to-refresh
+│   └── AddUser/             Create-user form (useMutation)
+├── router/                  Stack navigator + bottom tabs
+├── constants/, utils/       Screen size, SVG path helpers, types
+App.tsx                      Providers (QueryClient, Navigation, Paper, Toast)
+```
+
+## API
+
+The app expects a REST API with two endpoints:
+
+| Method | Path | Body / Response |
+| --- | --- | --- |
+| `GET` | `/getUsers` | `[{ _id, name, description, img }]` |
+| `POST` | `/createUser` | `{ name, description }` |
+
+## Getting started
+
+Requirements: Node.js 18 or later and a working [React Native environment](https://reactnative.dev/docs/environment-setup) (Android Studio and/or Xcode).
 
 ```bash
-# using npm
-npm start
+# 1. Install dependencies
+yarn install            # or: npm install
 
-# OR using Yarn
+# 2. Configure the API base URL
+echo "API_URL=https://your-api.example.com" > .env
+
+# 3. iOS only: install pods
+cd ios && bundle install && bundle exec pod install && cd ..
+
+# 4. Start Metro, then run the app
 yarn start
+yarn android            # or: yarn ios
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+Other scripts:
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+yarn lint               # ESLint
+yarn test               # Jest
 ```
 
-### For iOS
+## Author
 
-```bash
-# using npm
-npm run ios
-
+**Andrés Largo** ([@teamzz111](https://github.com/teamzz111)), 2024.
